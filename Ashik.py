@@ -7,7 +7,7 @@ fps = 1
 time = 2
 
 
-def pic_to_vid(pthIn, pthOut):
+def img_to_vid(pthIn, pthOut):
     frame_array=[]
     files=[f for f in os.listdir(pthIn) if isfile(join(pthIn,f))]
     for i in range (len(files)):
@@ -49,3 +49,30 @@ def del_punc(sentence):
             no_punct = no_punct + char
     # display the unpunctuated string
     return no_punct
+
+
+def clear_Final_folder(dir):
+    os.chdir(dir)
+    files = glob.glob('*.png')
+    for filename in files:
+        os.unlink(filename)
+
+
+import speech_recognition as sr
+from kivy.properties import StringProperty
+
+r = sr.Recognizer()
+#dure = int(input("Set duration"))
+dure = 4
+
+
+def record():
+    with sr.Microphone() as source:
+        print("Speak now")
+        audio = r.record(source, duration=dure)
+        try:
+            output = r.recognize_google(audio)
+
+        except:
+            output = "Could not recognize"
+    return output
