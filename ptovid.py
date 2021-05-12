@@ -1,10 +1,8 @@
-import cv2,os,glob,nltk
-from os.path import isfile, join
-from PIL import Image
-
+import nltk
 import Ashik
 
-voice_text='Ashikur, Rahman'
+voice_text= Ashik.record()
+tokens =[]
 
 
 def tokenize(voice_text):
@@ -31,23 +29,15 @@ def tokenize(voice_text):
 
     out.release()'''
 
-
-def clear_Final_folder(dir):
-    os.chdir(dir)
-    files = glob.glob('*.png')
-    for filename in files:
-        os.unlink(filename)
-
-
-text = Ashik.del_punc(tokenize(voice_text))
-
 directory = 'C:/Users/user/PycharmProjects/videomake'
 pthIn = directory +'/Final/'
 pthOut = directory + '/Output/vid_ex.mp4'
 
+print(voice_text)
 
+text = Ashik.del_punc(tokenize(voice_text))
 Ashik.fetch_img(text)
-Ashik.pic_to_vid(pthIn,pthOut)
-#photo_to_vid()
-#clear_Final_folder(pthIn)
+Ashik.img_to_vid(pthIn,pthOut)
+
+Ashik.clear_Final_folder(pthIn)
 print("done")
