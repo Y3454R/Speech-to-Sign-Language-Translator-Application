@@ -1,0 +1,70 @@
+<Root>:
+    orientation: 'vertical'
+
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 10
+        size_hint: (1, 0.4)
+        Button:
+            id: about_us
+            background_color: 'blue'
+            text: 'About'
+            on_release: root.about()
+
+        Button:
+            id: contact
+            background_color: 'blue'
+            text: 'Contact'
+            on_release: root.contact()
+        Button:
+            id: help
+            background_color: 'blue'
+            text: 'Help'
+            on_release: root.help()
+        Button:
+            id: close
+            background_color: 'red'
+            text: 'Quit'
+            on_release: exit()
+
+    Label:
+        id: welcome
+        text: 'Welcome to Sign language'
+        font_size: 40
+    Label:
+        id: info
+        text: ''
+        font_size: 25
+
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 10
+        TextInput:
+            size_hint: (0.2,0.5)
+            id: input_text
+            background_color: 'green'
+            text: 'Enter duration in seconds'
+        Button:
+            id: record
+            background_color: 'green'
+            size_hint: (0.6,0.5)
+            font_size: 20
+            text:'Speak now'
+            on_press: root.record()
+
+        Spinner:
+            id: spinner_id
+            background_color: 'green'
+            size_hint: (0.3,0.5)
+            font_size:20
+            text: 'Options'
+            values: ['Upload Recorded audio', 'Enter text', 'Upload text']
+            on_text: root.spinner_clicked(spinner_id.text)
+        Button:
+            id: next_btn
+            background_color: 'yellow'
+            size_hint: (0.2, 0.5)
+            font_size:15
+            text: 'Go with option'
+            on_press: root.next()
+
