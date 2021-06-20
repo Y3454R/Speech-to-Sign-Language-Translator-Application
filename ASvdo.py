@@ -3,6 +3,7 @@ from os.path import isfile, join
 from PIL import Image
 import nltk
 
+#Can be modified when user changes setting of delay for each frame
 fps = 1
 time = 2
 
