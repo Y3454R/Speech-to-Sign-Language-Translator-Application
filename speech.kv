@@ -1,70 +1,138 @@
 <Root>:
     orientation: 'vertical'
-
-    BoxLayout:
-        orientation: 'horizontal'
-        padding: 10
-        size_hint: (1, 0.4)
-        Button:
-            id: about_us
-            background_color: 'blue'
-            text: 'About'
-            on_release: root.about()
-
-        Button:
-            id: contact
-            background_color: 'blue'
-            text: 'Contact'
-            on_release: root.contact()
-        Button:
-            id: help
-            background_color: 'blue'
-            text: 'Help'
-            on_release: root.help()
-        Button:
-            id: close
-            background_color: 'red'
-            text: 'Quit'
-            on_release: exit()
-
+    
     Label:
         id: welcome
-        text: 'Welcome to Sign language'
-        font_size: 40
+        text: 'Welcome to Sign Language'
+        font_size: 35
+        size_hint: 1, 0.2
+
     Label:
+        id: connection
+        text:'Internet Connected. You can use all features'
+        font_size: 15
+        size_hint: 1,0.1  
+
+    TextInput:
         id: info
+        spacing: 10
+        readonly: True
+        background_color: 'grey'
         text: ''
-        font_size: 25
+        font_size: 15
+        size_hint: 1, 0.3
 
     BoxLayout:
         orientation: 'horizontal'
-        padding: 10
-        TextInput:
-            size_hint: (0.2,0.5)
-            id: input_text
-            background_color: 'green'
-            text: 'Enter duration in seconds'
-        Button:
-            id: record
-            background_color: 'green'
-            size_hint: (0.6,0.5)
-            font_size: 20
-            text:'Speak now'
-            on_press: root.record()
 
-        Spinner:
-            id: spinner_id
-            background_color: 'green'
-            size_hint: (0.3,0.5)
-            font_size:20
-            text: 'Options'
-            values: ['Upload Recorded audio', 'Enter text', 'Upload text']
-            on_text: root.spinner_clicked(spinner_id.text)
-        Button:
-            id: next_btn
-            background_color: 'yellow'
-            size_hint: (0.2, 0.5)
-            font_size:15
-            text: 'Go with option'
-            on_press: root.next()
+        BoxLayout:
+            orientation:'vertical'
+            padding: 10
+            spacing: 3
+            size_hint: 0.25, 0.8
+            Spinner:
+
+                id: duration
+                font_size:18
+                background_color: 'skyblue'
+                text: '3s'
+                values: ['3s', '5s', '7s', '10s']
+               # on_text: root.duration_clicked(duration.text)
+            Button:
+                id: record
+                background_color: 'skyblue'
+                font_size: 18
+                text:'Speak now'
+                on_press:
+                    root.ids.welcome.text = 'Speaking'
+                    root.record()
+            Spinner:
+                id: spinner_id
+                background_color: 'skyblue'
+                font_size:18
+                text: 'Options'
+                values: ['Recorded audio', 'Upload text','Enter text']
+                on_text: root.spinner_clicked(spinner_id.text)
+
+            
+
+            Button:
+                id: about_us
+                background_color: 'skyblue'
+                text: 'About'
+                font_size: 18
+                on_release: root.about()
+                
+
+            Button:
+                id: contact
+                background_color: 'skyblue'
+                text: 'Contact'
+                font_size: 18
+                on_release: root.contact()
+                
+            Button:
+                id: help
+                background_color: 'skyblue'
+                text: 'Help'
+                font_size: 18
+                on_release: root.help()
+            Button:
+                id: refresh
+                background_color: 'skyblue'
+                text: 'Refresh'
+                font_size: 18
+                on_release: root.refresh()
+            Button:
+                id: close
+                background_color: 'red'
+                text: 'Quit'
+                font_size: 18
+                on_release: exit()
+
+        BoxLayout:
+            orientation: 'vertical'
+
+            Video:
+                id: vid
+                source: 'C:/Users/user/PycharmProjects/videomake/Output/vid_ex.mp4'
+                color: 'black'
+                padding: 10
+                size_hint: 0.98, 4
+                allow_stretch: True
+            
+            FloatLayout:
+                orientation: 'horizontal'
+                padding: 10
+                
+                Button:
+                    id: next_btn
+                   # pos: 300, 5
+                    pos_hint: {'center_x': 0.30, 'center_y': 0.35}
+                    size_hint: None, None
+                    size: 120,45
+                    background_color: 'grey'
+                    font_size:15
+                    text: 'Submit'
+                    on_press: root.next()
+
+                Button:
+                    id: play
+                   # pos: 420, 5
+                    pos_hint: {'center_x': 0.50, 'center_y': 0.35}
+                    size_hint: None, None
+                    size: 120,45
+                    text:'Play'
+                    background_color: 'blue'
+                    on_press: root.play()
+
+                Button:
+                    id: save
+                   # pos: 540, 5
+                    pos_hint: {'center_x': 0.70, 'center_y': 0.35}
+                    size_hint: None, None
+                    size: 120,45
+                    text:'Save'
+                    background_color: 'skyblue'
+                    on_press: root.save()
 
