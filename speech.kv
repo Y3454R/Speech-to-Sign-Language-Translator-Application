@@ -1,6 +1,6 @@
+
 <Root>:
     orientation: 'vertical'
-    
     Label:
         id: welcome
         text: 'Welcome to Sign Language'
@@ -24,7 +24,6 @@
 
     BoxLayout:
         orientation: 'horizontal'
-
         BoxLayout:
             orientation:'vertical'
             padding: 10
@@ -51,7 +50,7 @@
                 background_color: 'skyblue'
                 font_size:18
                 text: 'Options'
-                values: ['Recorded audio', 'Upload text','Enter text']
+                values: ['Recorded audio', 'Upload text','Enter text','Add image']
                 on_text: root.spinner_clicked(spinner_id.text)
 
             
@@ -99,27 +98,17 @@
                 color: 'black'
                 padding: 10
                 size_hint: 0.98, 4
-                allow_stretch: True
+                
             
             FloatLayout:
                 orientation: 'horizontal'
                 padding: 10
                 
-                Button:
-                    id: next_btn
-                   # pos: 300, 5
-                    pos_hint: {'center_x': 0.30, 'center_y': 0.35}
-                    size_hint: None, None
-                    size: 120,45
-                    background_color: 'grey'
-                    font_size:15
-                    text: 'Submit'
-                    on_press: root.next()
 
                 Button:
                     id: play
-                   # pos: 420, 5
-                    pos_hint: {'center_x': 0.50, 'center_y': 0.35}
+                   #pos: 420, 5
+                    pos_hint: {'center_x': 0.40, 'center_y': 0.35}
                     size_hint: None, None
                     size: 120,45
                     text:'Play'
@@ -129,10 +118,11 @@
                 Button:
                     id: save
                    # pos: 540, 5
-                    pos_hint: {'center_x': 0.70, 'center_y': 0.35}
+                    pos_hint: {'center_x': 0.60, 'center_y': 0.35}
                     size_hint: None, None
                     size: 120,45
                     text:'Save'
                     background_color: 'skyblue'
                     on_press: root.save()
+
 
